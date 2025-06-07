@@ -1,7 +1,7 @@
 Package: astgrepr
 Type: Package
 Title: Parse and Manipulate R Code
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Etienne",
            family = "Bacher",
@@ -24,8 +24,8 @@ SystemRequirements: Cargo (Rust's package manager), rustc (>= 1.78.0)
 VignetteBuilder: knitr
 Language: en-US
 NeedsCompilation: yes
-Packaged: 2025-05-28 19:51:01 UTC; etienne
+Packaged: 2025-06-07 14:01:36 UTC; etienne
 Author: Etienne Bacher [aut, cre, cph]
 Maintainer: Etienne Bacher <etienne.bacher@protonmail.com>
 Repository: CRAN
-Date/Publication: 2025-06-04 12:20:06 UTC
+Date/Publication: 2025-06-07 23:30:13 UTC
