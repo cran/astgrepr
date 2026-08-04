@@ -1,7 +1,7 @@
 Package: astgrepr
 Type: Package
 Title: Parse and Manipulate R Code
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     person(given = "Etienne",
            family = "Bacher",
@@ -12,8 +12,6 @@ Description: Parsing R code is key to build tools such as linters and stylers.
     can parse and explore R code.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Config/rextendr/version: 0.4.0.9000
-RoxygenNote: 7.3.2
 Depends: R (>= 4.2)
 Imports: checkmate, rrapply, stats, yaml
 Suggests: knitr, rmarkdown, rstudioapi, spelling, tinytest
@@ -23,9 +21,11 @@ BugReports: https://github.com/etiennebacher/astgrepr/issues
 SystemRequirements: Cargo (Rust's package manager), rustc (>= 1.78.0)
 VignetteBuilder: knitr
 Language: en-US
+Config/roxygen2/version: 8.0.0
+Config/rextendr/version: 0.5.0
 NeedsCompilation: yes
-Packaged: 2025-06-07 14:01:36 UTC; etienne
+Packaged: 2026-08-01 16:58:05 UTC; etienne
 Author: Etienne Bacher [aut, cre, cph]
 Maintainer: Etienne Bacher <etienne.bacher@protonmail.com>
 Repository: CRAN
-Date/Publication: 2025-06-07 23:30:13 UTC
+Date/Publication: 2026-08-04 14:40:02 UTC

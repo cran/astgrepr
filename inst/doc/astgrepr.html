@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -344,7 +345,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>This vignette will give you the basic knowledge so that you can start
 using <code>astgrepr</code>. If you want to know more about advanced
 rules and other topics, I invite you to read the docs of the Rust crate
-<a href="https://ast-grep.github.io/guide/pattern-syntax.html"><code>ast-grep</code></a>,
+<a href="https://astgrep.com/guide/pattern-syntax.html"><code>ast-grep</code></a>,
 on which this package is built.</p>
 <div id="first-steps" class="section level2">
 <h2>First steps</h2>
@@ -387,7 +388,7 @@ simple rule with <code>ast_rule()</code>:</p>
 include <code>pattern_rule()</code> and <code>relational_rule()</code>
 but we keep it simple for now. Once a rule is created, it can be applied
 on a node:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>root <span class="sc">|&gt;</span> </span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>root <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">node_find</span>(</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="fu">ast_rule</span>(<span class="at">id =</span> <span class="st">&quot;any_na&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;any(is.na($VAR))&quot;</span>),</span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="fu">ast_rule</span>(<span class="at">id =</span> <span class="st">&quot;any_dup&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;any(duplicated($VAR))&quot;</span>)</span>
@@ -403,7 +404,7 @@ of them contains a single node. This is expected:
 <code>node_find()</code> stops after the first node that matches the
 rule. If we want to look for all nodes that match this rule, we can use
 <code>node_find_all()</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>found_nodes <span class="ot">&lt;-</span> root <span class="sc">|&gt;</span> </span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>found_nodes <span class="ot">&lt;-</span> root <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">node_find_all</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="fu">ast_rule</span>(<span class="at">id =</span> <span class="st">&quot;any_na&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;any(is.na($VAR))&quot;</span>),</span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>    <span class="fu">ast_rule</span>(<span class="at">id =</span> <span class="st">&quot;any_dup&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;any(duplicated($VAR))&quot;</span>)</span>
@@ -418,7 +419,7 @@ multi-node variants. For instance, , we use <code>node_text_all()</code>
 to extract the text corresponding to each node and
 <code>node_range_all()</code> to get their start and end coordinates in
 the original code<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>found_nodes <span class="sc">|&gt;</span> </span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>found_nodes <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">node_text_all</span>()</span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; $any_na</span></span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; $any_na$node_1</span></span>
@@ -431,7 +432,7 @@ the original code<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a
 <span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; $any_dup</span></span>
 <span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; $any_dup$node_1</span></span>
 <span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; [1] &quot;any(duplicated(variable))&quot;</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>found_nodes <span class="sc">|&gt;</span> </span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>found_nodes <span class="sc">|&gt;</span></span>
 <span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>  <span class="fu">node_range_all</span>()</span>
 <span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; $any_na</span></span>
 <span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; $any_na$node_1</span></span>

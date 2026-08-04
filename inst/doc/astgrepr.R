@@ -25,14 +25,14 @@ root
 ast_rule(id = "any_na", pattern = "any(is.na($VAR))")
 
 ## -----------------------------------------------------------------------------
-root |> 
+root |>
   node_find(
     ast_rule(id = "any_na", pattern = "any(is.na($VAR))"),
     ast_rule(id = "any_dup", pattern = "any(duplicated($VAR))")
   )
 
 ## -----------------------------------------------------------------------------
-found_nodes <- root |> 
+found_nodes <- root |>
   node_find_all(
     ast_rule(id = "any_na", pattern = "any(is.na($VAR))"),
     ast_rule(id = "any_dup", pattern = "any(duplicated($VAR))")
@@ -41,9 +41,9 @@ found_nodes <- root |>
 found_nodes
 
 ## -----------------------------------------------------------------------------
-found_nodes |> 
+found_nodes |>
   node_text_all()
-found_nodes |> 
+found_nodes |>
   node_range_all()
 
 ## -----------------------------------------------------------------------------

@@ -8,13 +8,15 @@
 [![R-CMD-check](https://github.com/etiennebacher/astgrepr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/etiennebacher/astgrepr/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/etiennebacher/astgrepr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/etiennebacher/astgrepr?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/astgrepr)](https://CRAN.R-project.org/package=astgrepr)
 <!-- badges: end -->
 
-`astgrepr` provides R bindings to the
-[ast-grep](https://ast-grep.github.io/) Rust crate. `ast-grep` is a tool
-to parse the abstract syntax tree (AST) of some code and to perform
-search and rewrite of code. This is extremely useful to build linters,
-stylers, and perform a lot of code analysis.
+`astgrepr` provides R bindings to the [ast-grep](https://astgrep.com/)
+Rust crate. `ast-grep` is a tool to parse the abstract syntax tree (AST)
+of some code and to perform search and rewrite of code. This is
+extremely useful to build linters, stylers, and perform a lot of code
+analysis.
 
 See the example below and the [“Getting started”
 vignette](https://astgrepr.etiennebacher.com/articles/astgrepr) for a
@@ -26,7 +28,7 @@ Since `astgrepr` can be used as a low-level foundation for other tools
 ``` r
 > pak::local_deps_tree()
 ✔ Loading metadata database ... done
-local::. 0.0.1 [new][bld]                                                  
+local::. 0.0.1 [new][bld]
 ├─checkmate 2.3.1 [new][dl] (746.54 kB)
 │ └─backports 1.5.0 [new]
 ├─rrapply 1.2.7 [new]
@@ -38,7 +40,15 @@ Key:  [new] new | [dl] download | [bld] build
 ## Installation
 
 ``` r
-install.packages('astgrepr', repos = c('https://etiennebacher.r-universe.dev', 'https://cloud.r-project.org'))
+install.packages("astgrepr")
+```
+
+Development version (you might need to install
+[Rust](https://rust-lang.org/tools/install/)):
+
+``` r
+# install.packages("remotes")
+remotes::install_github("etiennebacher/astgrepr")
 ```
 
 ## Demo
